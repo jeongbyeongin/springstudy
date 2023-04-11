@@ -1,0 +1,82 @@
+package com.gdu.app01.java01;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import oracle.net.aso.c;
+
+/*
+	@Configuration
+	안녕. 난 Configuration이라고 해.
+	Spring Container에 Bean을 만들어 두는 Java 클래스야.
+	Spring Bean Configuration File하고 같은 일을 하지.
+*/
+
+@Configuration
+public class AppContext {
+
+	// Bean을 만들고 싶으면 메소드를 만들면 됩니다. (Bean 하나 = 메소드 하나)
+	
+	/*
+		@Bean
+		안녕. 난 Bean을 만드는 메소드야.
+		반환타입이 Bean의 타입(<bean> 태그의 class 속성)이고,
+		메소드명이 Bean의 이름(<bean> 태그의 id 속성)이야.
+	 */
+	
+	@Bean
+	public Contact contact1() {		// <bean id="contact1" class="Contact">
+		Contact c = new Contact();	// default constructor
+		c.setTel("02-2222-2220");	// setter <property name="tel" value="02-2222-2220" />
+		c.setFax("02-2222-2229");	// setter <property name="fax" value="02-2222-2229" />
+		return c;					// 반환한 객체 c가 Spring Container에 저장됩니다.
+	}
+	
+	@Bean
+	public User user1() {			// <bean id="user1" class="User"
+		User u = new User();		// default constructor
+		u.setId("spider");			// setter <property name="id" value="spider" />
+		u.setContact(contact1());	// setter <property name="contact" ref="contact1" />
+		return u;					// 반환한 객체 u가 Spring Container에 저장됩니다.
+	}
+	
+	// contact2, user2 빈을 constructor를 이용해서 만들어 보세요. 그리고 MainClass에서 확인하세요.
+	
+	/* 이전 방법
+	@Bean
+	public Contact contact2() {
+		Contact c = new Contact();
+		c.setTel("010-2682-0247");
+		c.setFax("010-0000-4885");
+		return c;
+	}
+	
+	@Bean
+	public User user2() {
+		User u = new User();
+		u.setId("byeongin");
+		u.setContact(contact2());
+		return u;
+	}
+	 */
+	
+	@Bean(name="contact2")
+	public Contact www() {
+		return new Contact("02-444-4444", "02-333-3333");
+	}
+	
+	@Bean(name="user2")
+	public User aaa() {
+		return new User("superbee", www());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

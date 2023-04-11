@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="academy" class="com.gdu.app01.xml02.Academy">
+		<property name="name">
+			<value>정병인</value>
+		</property>
+		<property name="address">
+			<ref bean="address" />
+		</property>
+	</bean>
+	
+	<bean id="address" class="com.gdu.app01.xml02.Address">
+		<property name="loadadd">
+			<value>서울특별시 금천구 가산디지털2로</value>
+		</property>
+		<property name="jibynadd">
+			<value>서울특별시 금천구 가산동</value>
+		</property>
+		<property name="contact">
+			<ref bean="contact" />
+		</property>
+	</bean>
+	
+	<bean id="contact" class="com.gdu.app01.xml02.Contact">
+		<property name="phoneNo">
+			<value>02-2122-1231</value>
+		</property>
+		<property name="fexNo">
+			<value>02-1241-1515</value>
+		</property>
+	</bean>
+
+
+</beans>
