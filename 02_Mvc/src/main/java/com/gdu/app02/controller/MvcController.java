@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MvcController {
@@ -17,6 +18,15 @@ public class MvcController {
 		2. @PostMapping		// POST 방식일 때 쓴다.
 		3. @PutMapping		// PUT 방식일 때 쓴다. (수정할 때)
 		4. @DeleteMapping	// DELETE 방식일 때 쓴다. (삭제할 때)
+	*/
+	
+	/*
+		요청 파라미터의 UTF-8 인코딩 처리
+		
+		메소드마다 request.setCharacterEncoding("UTF-8")을 작성하는 것은 매우 비효율적이므로,
+		모든 요청(contextPath를 가진 모든 요청)마다 동작하도록 filter를 사용한다.
+		CharacterEncodingFilter를 통해서 모든 요청마다 자동으로 UTF-8로 인코딩된다.
+		참고할 파일 : web.xml
 	*/
 	
 	/* 1. HttpServletRequest로 요청 파라미터 처리하기 */
@@ -51,6 +61,45 @@ public class MvcController {
 			return "redirect:이동할경로";
 		*/
 	}
+	
+	/*
+		2. @RequestParam으로 요청 파라미터 처리하기
+			1) value 		: 요청 파라미터 이름
+			2) required 	: 요청 파라미터의 필수 여부(디폴트는 true)
+			3) defaultValue : 요청 파라미터가 없을 때 대신 사용할 값
+	*/
+	@GetMapping("/detail.me")
+	public String detailMe(@RequestParam(value="name", required = false, defaultValue = "홍길동") String name,  // 요청 파라미터 name이 없으면 "홍길동"을 사용한다.
+						   @RequestParam(value="age", required = false, defaultValue = "0") int age,			// 요청 파라미터 age가 없으면 "0"을 사용한다.
+						   Model model) {
+		
+		model.addAttribute("name", name);
+		model.addAttribute("age", age);
+		
+		return "mvc/detail";
+		
+	}
+	/*
+	@GetMapping("/detail.me")
+	public String detailMe(String name,  // 요청 파라미터 name이 없으면 null이 저장된다.
+						    int age,			// 요청 파라미터 age가 없으면 null을 int로 변환하려고 하기 때문에 오류가 발생한다.
+						   Model model) {
+		
+		model.addAttribute("name", name);
+		model.addAttribute("age", age);
+		
+		return "mvc/detail";
+		
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
