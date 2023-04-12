@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gdu.app02.domain.Person;
+
 @Controller
 public class MvcController {
 
@@ -80,22 +82,38 @@ public class MvcController {
 		
 	}
 	/*
-	@GetMapping("/detail.me")
-	public String detailMe(String name,  // 요청 파라미터 name이 없으면 null이 저장된다.
+	@GetMapping("/detail.me")					// @RequestParam을 생략할 수 있다.
+	public String detailMe(String name,   		// 요청 파라미터 name이 없으면 null이 저장된다.
 						    int age,			// 요청 파라미터 age가 없으면 null을 int로 변환하려고 하기 때문에 오류가 발생한다.
-						   Model model) {
-		
+						   Model model) {		
 		model.addAttribute("name", name);
 		model.addAttribute("age", age);
-		
 		return "mvc/detail";
 		
 	}
 	*/
 	
+	/*
+		3. 커맨드 객체를 이용한 요청 파라미터 처리
+			1) 파라미터를 필드로 가진 객체를 커맨드 객체라고 한다.
+			2) setter가 사용된다.
+			3) 커맨드 객체는 자동으로 Model에 저장된다.
+	*/
+	@GetMapping("/detail.gdu")
+	public String detailGdu(Person p) {		// name과 age를 필드로 가진 커맨드 객체 Person p
+											// Model에 저장될 때 객체 이름인 p를 사용하지 않고,
+											// 객체 타입인 Person을 사용한다. 
+											// Model에 저장되는 속성명은 객체 타입 Person을 person으로 수정해서 사용한다.(Spring이 알아서 자동으로 사용된다.
+		return "mvc/detail";
+	}
 	
 	
-	
+	/*
+		@GetMapping("/detail.gdu")
+		public String detailGdu(@ModelAttribute(value=p)Person person) {	// Model에 저장할 속성명을 p로 해 주세요.									
+																			// detail.jsp에서는 ${p.name}, ${p.age}와 같은 형식으로 확인할 수 있다.
+		return "mvc/detail";
+	*/
 	
 	
 	

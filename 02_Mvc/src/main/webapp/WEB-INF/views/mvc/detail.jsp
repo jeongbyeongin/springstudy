@@ -11,6 +11,11 @@
 	<h1>이름 ${name}</h1>
 	<h2>나이 ${age}</h2>
 	
+	<hr>
+	
+	<h1>이름 ${person.name}</h1>
+	<h2>나이 ${person.age}</h2>	
+	
 
 </body>
 </html>

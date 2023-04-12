@@ -43,6 +43,18 @@
 	<div><a href="${contextPath}/detail.me?name=우민이술먹으면">상세보기2</a></div>
 	<div><a href="${contextPath}/detail.me?age=3">상세보기3</a></div>
 	<div><a href="${contextPath}/detail.me?name=우민이술먹으면&age=3">상세보기4</a></div>
+	
+	<h1>요청 파라미터-3</h1>
+	<div><a href="${contextPath}/detail.gdu">상세보기1</a></div>
+	<div><a href="${contextPath}/detail.gdu?name=우민이술먹으면">상세보기2</a></div>
+	<div><a href="${contextPath}/detail.gdu?age=3">상세보기3</a></div>
+	<div><a href="${contextPath}/detail.gdu?name=우민이술먹으면&age=3">상세보기4</a></div>
+	
+	<!-------------------------------------------------------------------------------------->
+	
+	<!-- DiController에서 확인합시다. -->
+	<h1>Dependency Injection</h1>
+	<div><a href="${contextPath}/bbs/detail.do">상세보기</a></div>
 		
 </body>
 </html>
