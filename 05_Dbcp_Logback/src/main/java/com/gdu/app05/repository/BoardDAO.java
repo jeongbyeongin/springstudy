@@ -15,8 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.gdu.app05.domain.BoardDTO;
 
 
-@Repository	// DAO가 사용하는 @Component이다.
-			// @Repository에 의해서 Spring Container에 Bean이 등록될 때 Singleton으로 등록되기 때문에 별도의 Singleton Pattern 코드를 작성할 필요가 없다.
+// @Repository 대신 AppConfig에 @Bean이 등록되어 있다.
 public class BoardDAO {
 
 	// dbcp 방식 (jdbc + DataSource)
