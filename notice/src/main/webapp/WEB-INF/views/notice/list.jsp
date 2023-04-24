@@ -53,7 +53,7 @@
 				<c:forEach items="${noticeList}" var="n">
 					<tr>
 						<td>${n.notice_no}</td>
-						<td><a href="${contextPath}/notice/detail.do?notice_no=${n.notice_no}">${n.title}</a></td>
+						<td><a href="${contextPath}/detail.do?notice_no=${n.notice_no}">${n.title}</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -63,7 +63,7 @@
 	<hr>
 	
 	<div>
-		<a href="${contextPath}/notice/write.do">새로운 공지 작성하러 가기</a>
+		<a href="${contextPath}/write.do">새로운 공지 작성하러 가기</a>
 	</div>
 	
 </body>

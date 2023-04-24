@@ -10,7 +10,7 @@
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 <script>
 	function fnList() {
-		location.href = '${contextPath}/notice/list.do';
+		location.href = '${contextPath}/list.do';
 	}
 </script>
 </head>
@@ -18,7 +18,7 @@
 
 	<div>
 		<h1>공지 작성하기</h1>
-		<form method="post" action="${contextPath}/notice/add.do">
+		<form method="post" action="${contextPath}/add.do">
 		<div>
 			<label for="gubun">구분</label>
 				<select id="gubun" name="gubun">

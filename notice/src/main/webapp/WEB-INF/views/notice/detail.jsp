@@ -15,11 +15,11 @@
 	}
 	function fnRemove(){
 		if(confirm('공지사항을 삭제할까요?')){
-			location.href = '${contextPath}/notice/remove.do?notice_no=${notice.notice_no}';
+			location.href = '${contextPath}/remove.do?notice_no=${notice.notice_no}';
 		}
 	}
 	function fnList(){
-		location.href = '${contextPath}/notice/list.do';
+		location.href = '${contextPath}/list.do';
 	}
 	function fnBack(){
 		$('#edit_screen').hide();
@@ -64,7 +64,7 @@
 	<div id="edit_screen">
 		<div style="cursor: pointer;" onclick="fnBack()">← 뒤로 가기</div>
 		<h1>공지사항 편집하기</h1>
-		<form method="post" action="${contextPath}/notice/modify.do">
+		<form method="post" action="${contextPath}/modify.do">
 		<div>
 			<label for="gubun">구분</label>
 				<select id="gubun" name="gubun">

@@ -9,34 +9,35 @@
 <title>Insert title here</title>
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 <script>
+
 	function fnInit(){
 		let addResult = '${addResult}';
-		if(addResult != '') {
+		if(addResult != ''){
 			if(addResult == '1'){
-				alert('공지사항이 등록되었습니다.');
-			} else {
-				alert('공지사항이 등록되지 않았습니다.');
-			}
+			alert('공지사항이 등록됨');
+		} else {
+			alert('공지사항등록안됨');
 		}
-		let removeResult = '${removeResult}';
-		if(removeResult != '') {
-			if(removeResult == '1'){
-				alert('공지사항이 삭제되었습니다.');
-			} else {
-				alert('공지사항이 삭제되지 않았습니다.');
-			}
+	}
+	let removeResult = '${removeResult}';
+	if(removeResult != ''){
+		if(removeResult == '1'){
+			alert('공지사항 삭제됨');
+		} else {
+			alert('공지사항 삭제실패');
 		}
+	}
 	}
 	$(function(){
 		fnInit();
 	})
+	
 </script>
 </head>
 <body>
-
 	<div>
-		<h3>고양이 상사에 오신 걸 환영합니다</h3>
-		<img src="${contextPath}/resources/images/cat.jpg" width="300px">
+	<h3>고양이 상사에 오신 걸 환영합니다.</h3>
+	<img src="${contextPath}/resources/images/cat.jpg" width="300px">
 	</div>
 	
 	<hr>
@@ -53,7 +54,7 @@
 				<c:forEach items="${noticeList}" var="n">
 					<tr>
 						<td>${n.notice_no}</td>
-						<td>${n.title}</td>
+						<td><a href="${contextPath}/detail.do?notice_no=${n.notice_no}">${n.title}</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -63,8 +64,10 @@
 	<hr>
 	
 	<div>
-		<a href="${contextPath}/notice/write.do">새로운 공지 작성하러 가기</a>
+	<a href="${contextPath}/write.do">새로운 공지 작성하러 가기</a>
 	</div>
+	
+	
 	
 </body>
 </html>
