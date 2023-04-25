@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gdu.prd.domain.ProductDTO;
@@ -30,6 +31,17 @@ public class ProductController {
 		int addResult = productService.addProduct(productDTO);
 		redirectAttributes.addFlashAttribute("addResult", addResult);					// addResult를 리다이렉트하는 것은 list.jsp에서 addResult를 속성의 형태로 보낸다.
 		return "redirect:/product/list.do";
+	}
+	
+	@GetMapping("/detail.do")
+	public String detail(@RequestParam(value="prodNo", required= false, defaultValue= "0") int prodNo, Model model) {
+		productService.loadProduct(prodNo, model);
+		return "/product/detail";
+	}
+	
+	@PostMapping("/edit.do")
+	public String edit(ProductDTO product) {
+		return "/product/edit";
 	}
 
 }
