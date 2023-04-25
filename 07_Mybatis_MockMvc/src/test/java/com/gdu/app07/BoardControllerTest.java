@@ -118,15 +118,4 @@ public class BoardControllerTest {
 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
