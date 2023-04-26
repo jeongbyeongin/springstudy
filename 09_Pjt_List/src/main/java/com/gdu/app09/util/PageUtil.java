@@ -65,8 +65,17 @@ public class PageUtil {
 		
 		
 	}
+	/* path = "/app09/employees/pagination.do?order=ASC" */
 	
 	public String getPagination(String path) {
+		
+		// path에 ?가 포함되어 있으면 이미 파라미터가 포함된 경로이므로 &를 붙여서 page 파라미터를 추가한다.
+		
+		if(path.contains("?")) {
+			path += "&";	// path = "/app09/employees/pagination.do?order=ASC&"
+		} else {
+			path += "?";	// path = "/app09/employees/pagination.do?
+		}
 		
 		StringBuilder sb = new StringBuilder();
 		
@@ -83,7 +92,7 @@ public class PageUtil {
 		  sb.append("<span class=\"hidden\">◀</span>");
 		 // <span class="hidden">◀</span> 밖에 이렇게 만들고 복붙하면 자동으로 자바에서 "<span class=\"hidden\">◀</span>" 만들어준다.
 	  } else {
-		  sb.append("<a class=\"link\" href=\"" + path + "?page=" + (beginPage - 1) + "\">◀</a>");
+		  sb.append("<a class=\"link\" href=\"" + path + "page=" + (beginPage - 1) + "\">◀</a>");
 		  // sb.append("<a class=\"link\" href=\"/app09/employees/pagination.do?page=" + (beginPage - 1) + "\">◀</a>");
 		  // <a class="link" href="/app09/employees/pagination.do?page=(beginPage - 1)">◀</a>
 	  }
@@ -94,7 +103,7 @@ public class PageUtil {
 			  sb.append("<span class=\"strong\">" + p +"</span>");
 			  // <span class="strong">p</span>
 		  } else {
-			  sb.append("<a class=\"link\" href=\"" + path + "?page=" + p + "\">" + p + "</a>");
+			  sb.append("<a class=\"link\" href=\"" + path + "page=" + p + "\">" + p + "</a>");
 			  // sb.append("<a class=\"link\" href=\"/app09/employees/pagination.do?page=" + p + "\">" + p + "</a>");
 			  // <a class="link" href="/app09/employees/pagination.do?page=p">p</a>
 		  }
@@ -105,7 +114,7 @@ public class PageUtil {
 		  sb.append("<span class=\"hidden\">▶</span>");
 		  // <span class="hidden">▶</span>
 	  } else {
-		  sb.append("<a class=\"link\" href=\"" + path + "?page=" + (endPage + 1) + "\">▶</a>");
+		  sb.append("<a class=\"link\" href=\"" + path + "page=" + (endPage + 1) + "\">▶</a>");
 		  // sb.append("<a class=\"link\" href=\"/app09/employees/pagination.do?page=" + (endPage + 1) + "\">▶</a>");
 		  // <a class="link" href="/app09/employees/pagination.do?page=(endPage + 1)">▶</a>
 	  }
