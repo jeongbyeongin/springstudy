@@ -51,10 +51,22 @@ public class EmployeeController {
 		return "employees/scroll";
 	}
 	
-	@ResponseBody
+	@ResponseBody	
 	@GetMapping(value="/employee/scroll.do", produces="application/json")
 	public Map<String, Object> scroll(HttpServletRequest request){
 		return employeeListService.getEmployeeListUsingScroll(request);
 	}
+	
+	@GetMapping("/employees/search.do")
+	public String search(HttpServletRequest request, Model model) {
+		employeeListService.getEmployeeListUsingSearch(request, model);
+		return "employees/search";
+	}
+	
+	@ResponseBody	
+	@GetMapping(value="/employees/autoComplete.do", produces="application/json")
+	public Map<String, Object> autoComplete(HttpServletRequest request){
+		return employeeListService.getAutoComplete(request);
+	}	
 	
 }
