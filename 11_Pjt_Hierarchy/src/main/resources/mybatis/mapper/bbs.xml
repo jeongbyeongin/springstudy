@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace는 @Mapper를 지정 한다.-->
+<mapper namespace="com.gdu.app11.mapper.BbsMapper">
+
+	<select id="getBbsCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM BBS
+	</select>
+	
+	<select id="getBbsList" parameterType="Map" resultType="BbsDTO">
+		SELECT A.RN, A.BBS_NO, A.TITLE, A.IP, A.CREATED_AT, A.STATE, A.DEPTH, A.GROUP_NO, A.GROUP_ORDER
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY BBS_NO DESC) AS RN, BBS_NO, TITLE, IP, CREATED_AT, STATE, DEPTH, GROUP_NO, GROUP_ORDER
+		  		  FROM BBS) A
+		 WHERE A.RN BETWEEN #{begin} AND #{end}
+	</select>
+
+</mapper>
