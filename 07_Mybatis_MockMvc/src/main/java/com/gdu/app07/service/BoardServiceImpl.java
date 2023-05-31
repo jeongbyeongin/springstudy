@@ -46,8 +46,7 @@ public class BoardServiceImpl implements BoardService {
 			board.setContent(content);
 			board.setWriter(writer);
 			return boardDAO.insertBoard(board);
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			return 0;
 		}
 	}
@@ -55,7 +54,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int modifyBoard(HttpServletRequest request) {
 		try {
-			
 			// 파라미터 title, content, boardNo를 받아온다.
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
@@ -66,8 +64,7 @@ public class BoardServiceImpl implements BoardService {
 			board.setContent(content);
 			board.setBoardNo(boardNo);
 			return boardDAO.updateBoard(board);
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			return 0;
 		}
 	}
@@ -78,29 +75,17 @@ public class BoardServiceImpl implements BoardService {
 			// 파라미터 boardNo를 받아온다.
 			int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 			return boardDAO.deleteBoard(boardNo);
-		} catch(Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			return 0;
 		}
 	}
 	
 	// 트랜잭션 확인
-	@Transactional
+	@Transactional(readOnly=true)  // 성능 향상을 위해서 readOnly=true 추가
 	@Override
 	public void testTx() {
 		boardDAO.insertBoard(new BoardDTO(0, "타이틀", "콘텐트", "작성자", null, null));
 		boardDAO.insertBoard(new BoardDTO());
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

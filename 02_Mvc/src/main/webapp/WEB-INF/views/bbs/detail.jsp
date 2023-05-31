@@ -13,7 +13,7 @@
 		<div>제목 ${bbs1.title}</div>
 		<div>작성 ${bbs1.createdAt}</div>
 	</div>
-	
+
 	<div>
 		<div>번호 ${bbs2.bbsNo}</div>
 		<div>제목 ${bbs2.title}</div>

@@ -6,32 +6,33 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class MyDAO {
-	
+
 	// field
 	private Connection con;
 	
-	// singleton pattern - app-context.xml에서 <bean> 태그를 만들 때 사용된다. (개발자가 해줄 필요가 없다.)
+	// singleton pattern - app-context.xml에서 <bean> 태그를 만들 때 사용된다.
 	
-	// method ( 목록을 가져오는 리스트가 있다)
+	// method
 	public Connection getConnection() {
 		
 		// Spring Container에 만들어 둔 myConn Bean 가져오기
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("xml04/app-context.xml");
-		con = ctx.getBean("myConn", MYConnection.class).getConnection();
+		con = ctx.getBean("myConn", MyConnection.class).getConnection();
 		ctx.close();
 		return con;
+		
 	}
 	
 	public void close() {
 		
-		try { 
+		try {
 			if(con != null) {
-				con.close(); 
+				con.close();
 			} 
 		} catch(Exception e) {
 			e.printStackTrace();
-			
 		}
+		
 	}
 	
 	public void list() {
@@ -39,6 +40,7 @@ public class MyDAO {
 		con = getConnection();
 		
 		close();
+		
 	}
-
+	
 }

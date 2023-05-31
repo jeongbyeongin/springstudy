@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <script src="${contextPath}/resources/js/lib/jquery-3.6.4.min.js"></script>
 <script>
-	function fnList(){
+	function fnList() {
 		location.href = '${contextPath}/bbs/list.do';
 	}
 </script>
@@ -31,12 +31,11 @@
 			</div>
 			<div>
 				<button>작성완료</button>
-				<input type="reset" value="사라져라">
-				<input type="button" value="목록ㅋ" onclick="fnList()">
+				<input type="reset" value="입력초기화">
+				<input type="button" value="목록" onclick="fnList()">
 			</div>
 		</form>
 	</div>
-
 	
 </body>
 </html>

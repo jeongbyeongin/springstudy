@@ -72,6 +72,10 @@ public class FifthServiceImpl implements IFifthService {
 				sb.append(line);
 			}
 			
+			// 사용한 자원 반납
+			reader.close();
+			con.disconnect();
+			
 			// Papago API로부터 받은 번역 결과 자체가 문자열 형식의 JSON 데이터이다.
 			// 따라서 받은 내용을 그대로 보내준다.
 			// 여기서 보내는 데이터의 타입은 String으로 처리하지만,
@@ -86,4 +90,66 @@ public class FifthServiceImpl implements IFifthService {
 		
 	}
 
+	@Override
+	public ResponseEntity<String> search(HttpServletRequest request) {
+		
+		try {
+			
+			// 요청 parameter
+			String query = request.getParameter("query");
+			String display = request.getParameter("display");
+			String sort = request.getParameter("sort");
+			
+			// 검색어 인코딩 UTF-8
+			query = URLEncoder.encode(query, "UTF-8");
+			
+			// 클라이언트 아이디, 시크릿 (네이버개발자센터에서 발급 받은 본인 정보 사용합니다.)
+			String clientId = "L9IvTaJgIUZ1J2Y1J8vF";
+			String clientSecret = "WODB0AJ16b";
+			
+			// API 주소
+			String apiURL = "https://openapi.naver.com/v1/search/shop.json?query=" + query + "&display=" + display + "&sort=" + sort;
+			
+			// URL
+			URL url = new URL(apiURL);
+			
+			// HttpURLConnection
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+
+			// 요청 메소드
+			con.setRequestMethod("GET");
+			
+			// 요청 헤더에 포함하는 내용
+			con.setRequestProperty("X-Naver-Client-Id", clientId);
+			con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+			
+			// 네이버 검색 API로부터 번역 결과를 받아 올 입력 스트림 생성
+			BufferedReader reader = null;
+			if(con.getResponseCode() == 200) {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else {
+				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			// 응답(네이버에서 알려준 검색결과)
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			
+			// 사용한 자원 반납
+			reader.close();
+			con.disconnect();
+			
+			return new ResponseEntity<String>(sb.toString(), HttpStatus.OK);
+			
+		} catch(Exception e) {
+			
+			return new ResponseEntity<String>(HttpStatus.SERVICE_UNAVAILABLE);
+			
+		}
+		
+	}
+	
 }

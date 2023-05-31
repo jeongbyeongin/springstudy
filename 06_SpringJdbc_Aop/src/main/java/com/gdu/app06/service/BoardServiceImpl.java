@@ -46,10 +46,10 @@ public class BoardServiceImpl implements BoardService {
 		// 2개 이상의 삽입, 수정, 삭제가 하나의 서비스에서 진행되는 경우에 트랜잭션 처리가 필요하다.
 		
 		// 성공하는 작업
-		boardDAO.insertBoard(new BoardDTO(0, "트랜잭션제목", "트랜잭션내용", "트랜잭션작성자", null, null)); // Rollback되었다.  board_no 는 자동으로 들어간다
-																											 // null은 sysdate로 동작
+		boardDAO.insertBoard(new BoardDTO(0, "트랜잭션제목", "트랜잭션내용", "트랜잭션작성자", null, null));  // RollBack
+		
 		// 실패하는 작업
-		boardDAO.insertBoard(new BoardDTO());  // TITLE 칼럼은 NOT NULL이기 때문에 Exception이 발생한다. 여기서 죽은 것이다.
+		boardDAO.insertBoard(new BoardDTO());  // TITLE 칼럼은 NOT NULL이기 때문에 Exception이 발생한다.
 		
 		// 트랜잭션 처리가 된다면 모든 insert가 실패해야 한다.
 		

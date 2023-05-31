@@ -26,6 +26,4 @@ public class GymMember {
 		bmiCalc.bmiInfo();
 	}
 	
-	
-	
 }

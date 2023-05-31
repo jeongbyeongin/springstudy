@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.gdu.app08.batch.BoardCountScheduler;
 
-@EnableScheduling		// @Scheduled를 허용한다.
+@EnableScheduling  // @Scheduled를 허용한다.
 @Configuration
 public class BatchConfig {
 
@@ -14,6 +14,5 @@ public class BatchConfig {
 	public BoardCountScheduler boardCountScheduler() {
 		return new BoardCountScheduler();
 	}
-	
 	
 }

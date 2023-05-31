@@ -1,22 +1,25 @@
 package com.gdu.app01.xml02;
 
 public class Contact {
+
+	// field
+	private String tel;
+	private String fax;
+
+	// default constructor
 	
-	private String phoneNo;
-	private String fexNo;
-	
-	public String getPhoneNo() {
-		return phoneNo;
+	// method(getter + setter)
+	public String getTel() {
+		return tel;
 	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
-	public String getFexNo() {
-		return fexNo;
+	public String getFax() {
+		return fax;
 	}
-	public void setFexNo(String fexNo) {
-		this.fexNo = fexNo;
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
-	
-	
+
 }

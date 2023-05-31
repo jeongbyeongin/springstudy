@@ -11,13 +11,12 @@ public class FourthServiceImpl implements IFourthService {
 	@Override
 	public ResponseEntity<byte[]> display(String path, String filename) {
 		
-		
 		try {
-			
+
 			// path와 filename을 이용해서 File 객체 만들기
 			File file = new File(path, filename);
-			
-			// File 객체를 byte배열로 복사하기
+		
+			// File 객체를 byte 배열로 복사하기
 			byte[] b = FileCopyUtils.copyToByteArray(file);
 			
 			// byte 배열이 된 이미지 파일을 반환하기
@@ -27,7 +26,8 @@ public class FourthServiceImpl implements IFourthService {
 			e.printStackTrace();
 		}
 		
-		return null;	// 문법 맞출려는 가짜반환
+		return null;  // 가짜 반환
+		
 	}
 
 }

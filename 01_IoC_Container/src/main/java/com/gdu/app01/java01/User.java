@@ -31,9 +31,4 @@ public class User {
 		this.contact = contact;
 	}
 	
-	
-	
-	
-	
-	
 }

@@ -6,11 +6,11 @@ public class Contact {
 	private String tel;
 	private String fax;
 	
-	// default constructor ( 디폴트 생성자 )
+	// default constructor
 	public Contact() {
 		
 	}
-	// constructor ( 일반 생성자 )
+	// constructor
 	public Contact(String tel, String fax) {
 		super();
 		this.tel = tel;
@@ -30,8 +30,5 @@ public class Contact {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
-	
-	
-	
 	
 }

@@ -8,8 +8,8 @@ public class Student {
 	private Calculator calculator;
 	
 	// default constructor
-	
-	//method
+
+	// method
 	// getter + setter
 	public String getStuNo() {
 		return stuNo;
@@ -29,8 +29,5 @@ public class Student {
 	public void setCalculator(Calculator calculator) {
 		this.calculator = calculator;
 	}
-	
-	
-	
 	
 }

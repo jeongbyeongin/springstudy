@@ -7,7 +7,7 @@ public class Attach {
 	private String path;
 	
 	// default constructor
-	
+
 	// method(getter, setter)
 	public String getFilename() {
 		return filename;
@@ -21,9 +21,5 @@ public class Attach {
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
-
-	
-	
 	
 }

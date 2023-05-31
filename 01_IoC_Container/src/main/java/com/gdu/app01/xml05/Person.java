@@ -10,7 +10,7 @@ public class Person {
 	private List<String> hobbies;
 	private Set<String> contacts;
 	private Map<String, String> friends;
-	
+
 	// default constructor
 	
 	// method(getter, setter)
@@ -32,8 +32,5 @@ public class Person {
 	public void setFriends(Map<String, String> friends) {
 		this.friends = friends;
 	}
-	
-	
-	
 	
 }

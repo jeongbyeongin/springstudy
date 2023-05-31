@@ -16,7 +16,7 @@ public class FourthController {
 	private IFourthService fourthService;
 	
 	@GetMapping("/image/display")
-	public ResponseEntity<byte[]> display(@RequestParam("path") String path, @RequestParam("filename") String filename){
+	public ResponseEntity<byte[]> display(@RequestParam("path") String path, @RequestParam("filename") String filename) {
 		return fourthService.display(path, filename);
 	}
 	

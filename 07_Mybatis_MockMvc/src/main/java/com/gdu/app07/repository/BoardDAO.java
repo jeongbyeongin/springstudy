@@ -10,18 +10,18 @@ import com.gdu.app07.domain.BoardDTO;
 
 @Repository
 public class BoardDAO {
-	
+
 	@Autowired
-	SqlSessionTemplate sqlSessionTemplate;
+	private SqlSessionTemplate sqlSessionTemplate;
 	
 	private final String NS = "mybatis.mapper.board.";
 	
-	public List<BoardDTO> selectBoardList(){
+	public List<BoardDTO> selectBoardList() {
 		return sqlSessionTemplate.selectList(NS + "selectBoardList");
 	}
 	
-	public BoardDTO selectBoardByNo(int BoardNo) { 	// 서비스로부터 받아오는 자리  (int BoardNo) -> ( 이 자리 )
-		return sqlSessionTemplate.selectOne(NS + "selectBoardByNo", BoardNo); 	// 받아온 것을 BoardNo) 여기서 주는 것이다.
+	public BoardDTO selectBoardByNo(int boardNo) {
+		return sqlSessionTemplate.selectOne(NS + "selectBoardByNo", boardNo);
 	}
 	
 	public int insertBoard(BoardDTO board) {
@@ -30,10 +30,10 @@ public class BoardDAO {
 	
 	public int updateBoard(BoardDTO board) {
 		return sqlSessionTemplate.update(NS + "updateBoard", board);
-	} 
+	}
 	
-	public int deleteBoard(int BoardNo) {
-		return sqlSessionTemplate.update(NS + "deleteBoard", BoardNo);
+	public int deleteBoard(int boardNo) {
+		return sqlSessionTemplate.delete(NS + "deleteBoard", boardNo);
 	}
 	
 }

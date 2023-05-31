@@ -14,7 +14,7 @@
 <body>
 
 	<div>
-		<a href="${contextPath}/bbs/list.do">비비에스</a>
+		<a href="${contextPath}/bbs/list.do">BBS</a>
 	</div>
 	
 </body>

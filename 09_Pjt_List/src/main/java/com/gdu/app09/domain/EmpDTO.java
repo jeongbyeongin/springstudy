@@ -7,8 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class EmpDTO {
 	private int employeeId;
 	private String firstName;
@@ -20,6 +20,5 @@ public class EmpDTO {
 	private double salary;
 	private double commissionPct;
 	private int managerId;
-	/* private int departmentId; */
 	private DeptDTO deptDTO;
 }

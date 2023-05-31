@@ -12,8 +12,8 @@ public class MainClass {
 		Board board = ctx.getBean("board", Board.class);
 		System.out.println("제목: " + board.getTitle());
 		System.out.println("내용: " + board.getContent());
-		System.out.println("작성자 ID: " + board.getWriter().getId());
-		System.out.println("작성자 명: " + board.getWriter().getName());
+		System.out.println("작성자ID: " + board.getWriter().getId());
+		System.out.println("작성자명: " + board.getWriter().getName());
 		
 		ctx.close();
 

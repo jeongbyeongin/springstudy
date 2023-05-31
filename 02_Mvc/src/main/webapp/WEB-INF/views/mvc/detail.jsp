@@ -9,13 +9,12 @@
 <body>
 
 	<h1>이름 ${name}</h1>
-	<h2>나이 ${age}</h2>
+	<h1>나이 ${age}</h1>
 	
 	<hr>
 	
 	<h1>이름 ${person.name}</h1>
-	<h2>나이 ${person.age}</h2>	
-	
+	<h1>나이 ${person.age}</h1>
 
 </body>
 </html>

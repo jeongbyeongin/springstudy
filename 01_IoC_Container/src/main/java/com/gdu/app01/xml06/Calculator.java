@@ -5,7 +5,7 @@ public class Calculator {
 	// no field
 	
 	// default constructor
-
+	
 	// method
 	public double add(double a, double b) {
 		return a + b;
@@ -19,7 +19,5 @@ public class Calculator {
 	public double div(double a, double b) {
 		return a / b;
 	}
-	
-	
 	
 }

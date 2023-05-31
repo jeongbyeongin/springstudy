@@ -15,40 +15,40 @@
 <link rel="stylesheet" href="${contextPath}/resources/summernote-0.8.18-dist/summernote-lite.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
-   function fnEdit() {
-      $('#edit_screen').show();
-      $('#detail_screen').hide();
-   }
-   function fnRemove() {
-      if(confirm('삭제할까요?')) {
-         $('#frm_remove').submit();
-      }
-   }
-   function fnList() {
-      location.href='${contextPath}/board/list.do';
-   }
-   function fnBack(){
-      $('#edit_screen').hide();
-      $('#detail_screen').show();
-   }
-   $(function(){
-      $('#content').summernote({
-         width: 640,
-         height: 480,
-         lang: 'ko-KR',
-           toolbar: [
-             ['style', ['bold', 'italic', 'underline', 'clear']],
-             ['font', ['strikethrough', 'superscript', 'subscript']],
-             ['fontsize', ['fontsize']],
-             ['color', ['color']],
-             ['para', ['ul', 'ol', 'paragraph']],
-             ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-           ]
-      })
-      $('#edit_screen').hide();   // 최초 편집화면은 숨김
-   })
+	function fnEdit(){
+		$('#edit_screen').show();
+		$('#detail_screen').hide();
+	}
+	function fnRemove(){
+		if(confirm('삭제할까요?')){
+			$('#frm_remove').submit();
+		}
+	}
+	function fnList(){
+		location.href = '${contextPath}/board/list.do';
+	}
+	function fnBack(){
+		$('#edit_screen').hide();
+		$('#detail_screen').show();
+	}
+	$(function(){
+		$('#content').summernote({
+			width: 640,
+			height: 480,
+			lang: 'ko-KR',
+			toolbar: [
+				['style', ['bold', 'italic', 'underline', 'clear']],
+				['font', ['strikethrough', 'superscript', 'subscript']],
+				['fontname', ['fontname']],
+				['color', ['color']],
+				['para', ['ul', 'ol', 'paragraph']],
+				['table', ['table']],
+				['insert', ['link', 'picture', 'video']],
+				['view', ['fullscreen', 'codeview', 'help']]
+			]
+		})
+		$('#edit_screen').hide();  // 최초 편집화면은 숨김
+	})
 </script>
 </head>
 <body>

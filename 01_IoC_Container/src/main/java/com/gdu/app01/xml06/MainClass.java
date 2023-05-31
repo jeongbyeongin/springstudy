@@ -11,7 +11,7 @@ public class MainClass {
 		GymMember member = ctx.getBean("member", GymMember.class);
 		member.memberInfo();
 		ctx.close();
-
+		
 	}
 
 }

@@ -5,13 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	
+
 	<!-- 선행작업 : Namespaces 탭에서 context 옵션을 체크해 준다. -->
 
 	<!-- @Configuration 애너테이션을 사용할 수 있어요! -->
 	<context:annotation-config />
 	
 	<!-- AppContext에 정의된 bean을 만듭니다! -->
-	<bean class="com.gdu.app01.java_into_xml.AppContext" />
-	
+	<bean class="com.gdu.app01.java_into_xml.AppConfig" />
+
+
 </beans>

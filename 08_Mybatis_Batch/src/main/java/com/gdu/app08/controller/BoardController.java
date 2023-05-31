@@ -12,30 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gdu.app08.service.BoardService;
 
-
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-
-	/*
-		데이터(속성) 저장 방법
-		1. forward  : Model에 attribute로 저장한다.
-		2. redirect : RedirectAttributes에 flashAttribute로 저장한다.
-	*/
-	
-	// 호랑이 시절 ModelAndView 클래스
-	/*
-	@GetMapping("/list.do")
-	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("boardList", boardService.getBoardList());
-		mav.setViewName("board/list");
-		return mav;
-	}
-	 */
 	
 	// getBoardList() 서비스가 반환한 List<BoardDTO>를 /WEB-INF/views/board/list.jsp로 전달한다.
 	@GetMapping("/list.do")
@@ -56,34 +38,28 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	// addBoard() 서비스 내부에 location.href를 이용한 /board/list.do 이동이 있기 때문에 응답할 view를 반환하지 않는다.
+	// addBoard() 서비스 내부에 location.href를 이용한 /board/list.do 이동이 있기 때문에 응답할 View를 반환하지 않는다.
 	@PostMapping("/add.do")
 	public void add(HttpServletRequest request, HttpServletResponse response) {
-		 boardService.addBoard(request, response);
+		boardService.addBoard(request, response);
 	}
 	
-	// modifyBoard() 서비스 내부에 location.href를 이용한 /board/list.do 이동이 있기 때문에 응답할 view를 반환하지 않는다.
+	// modifyBoard() 서비스 내부에 location.href를 이용한 /board/detail.do 이동이 있기 때문에 응답할 View를 반환하지 않는다.
 	@PostMapping("/modify.do")
 	public void modify(HttpServletRequest request, HttpServletResponse response) {
 		boardService.modifyBoard(request, response);
 	}
 	
-	// removeBoard() 서비스 내부에 location.href를 이용한 /board/remove.do 이동이 있기 때문에 응답할 view를 반환하지 않는다. 
+	// removeBoard() 서비스 내부에 location.href를 이용한 /board/list.do 이동이 있기 때문에 응답할 View를 반환하지 않는다.
 	@PostMapping("/remove.do")
 	public void remove(HttpServletRequest request, HttpServletResponse response) {
 		boardService.removeBoard(request, response);
 	}
 	
-	// removeBoard() 서비스 내부에 location.href를 이용한 /board/removeList.do 이동이 있기 때문에 응답할 view를 반환하지 않는다. 
+	// removeList() 서비스 내부에 location.href를 이용한 /board/list.do 이동이 있기 때문에 응답할 View를 반환하지 않는다.
 	@PostMapping("/removeList.do")
 	public void removeList(HttpServletRequest request, HttpServletResponse response) {
 		boardService.removeBoardList(request, response);
 	}
 	
 }
-
-
-
-
-
-

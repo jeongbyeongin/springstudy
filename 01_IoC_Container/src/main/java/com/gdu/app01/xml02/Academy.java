@@ -2,9 +2,13 @@ package com.gdu.app01.xml02;
 
 public class Academy {
 
+	// field
 	private String name;
 	private Address address;
 	
+	// default constructor
+	
+	// method(getter + setter)
 	public String getName() {
 		return name;
 	}
@@ -17,7 +21,5 @@ public class Academy {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	
 	
 }

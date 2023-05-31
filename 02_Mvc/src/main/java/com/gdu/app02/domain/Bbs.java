@@ -11,6 +11,4 @@ public class Bbs {
 	private int bbsNo;
 	private String title;
 	private String createdAt;
-	
-	
 }

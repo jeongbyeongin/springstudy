@@ -149,17 +149,17 @@ public class BoardServiceImpl implements BoardService {
 	public void removeBoardList(HttpServletRequest request, HttpServletResponse response) {
 		
 		// 파라미터 boardNoList
-		String[] boardNoList = request.getParameterValues("boardNoList");
+		String[] boarNoList = request.getParameterValues("boardNoList");
 		
-																						
-		int removeResult = boardMapper.deleteBoardList(Arrays.asList(boardNoList));   // Arrays.asList(boardNoList) : String[] boardNoList를 ArrayList로 바꾸는 코드
-			try {																		// 스트링 배열을 자동으로 ArrayList로 바꾸어주는 코드			
+		int removeResult = boardMapper.deleteBoardList(Arrays.asList(boarNoList));  // Arrays.asList(boarNoList) : String[] boarNoList를 ArrayList로 바꾸는 코드
+		
+		try {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			
 			out.println("<script>");
-			if(removeResult == boardNoList.length) {
+			if(removeResult == boarNoList.length) {
 				out.println("alert('선택된 모든 게시글이 삭제되었습니다.')");
 				out.println("location.href='" + request.getContextPath() + "/board/list.do'");
 			} else {
@@ -173,23 +173,14 @@ public class BoardServiceImpl implements BoardService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Override
 	public void getBoardCount() {
-		
 		int boardCount = boardMapper.selectBoardCount();
 		String msg = "[" + LocalDateTime.now().toString() + "] 게시글 갯수는 " + boardCount + "개입니다.";
 		System.out.println(msg);
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

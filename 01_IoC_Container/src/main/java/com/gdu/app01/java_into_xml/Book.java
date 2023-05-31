@@ -8,7 +8,7 @@ public class Book {
 	
 	// default constructor
 	
-	// method( getter, setter )
+	// method(getter, setter)
 	public String getTitle() {
 		return title;
 	}
@@ -21,8 +21,5 @@ public class Book {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	
-	
-	
 	
 }

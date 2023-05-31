@@ -6,12 +6,11 @@
 	<bean id="calc" class="com.gdu.app01.xml06.Calculator" />
 	
 	<bean id="bmiCalc" class="com.gdu.app01.xml06.BmiCalculator">
-		<!-- 매개변수가 순서대로 들어간다. -->
 		<constructor-arg value="1.85" />
 		<constructor-arg value="80.5" />
 		<constructor-arg ref="calc" />
 	</bean>
-	
+
 	<bean id="member" class="com.gdu.app01.xml06.GymMember">
 		<constructor-arg value="김종국" />
 		<constructor-arg>
@@ -22,6 +21,5 @@
 		</constructor-arg>
 		<constructor-arg ref="bmiCalc" />
 	</bean>
-	
 
 </beans>

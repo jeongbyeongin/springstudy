@@ -2,22 +2,25 @@ package com.gdu.app01.xml02;
 
 public class Address {
 
-	private String loadadd;
-	private String jibynadd;
+	// field
+	private String roadAddress;
+	private String jibunAddress;
 	private Contact contact;
 	
+	// default constructor
 	
-	public String getLoadadd() {
-		return loadadd;
+	// method(getter + setter)
+	public String getRoadAddress() {
+		return roadAddress;
 	}
-	public void setLoadadd(String loadadd) {
-		this.loadadd = loadadd;
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
 	}
-	public String getJibynadd() {
-		return jibynadd;
+	public String getJibunAddress() {
+		return jibunAddress;
 	}
-	public void setJibynadd(String jibynadd) {
-		this.jibynadd = jibynadd;
+	public void setJibunAddress(String jibunAddress) {
+		this.jibunAddress = jibunAddress;
 	}
 	public Contact getContact() {
 		return contact;
@@ -25,10 +28,5 @@ public class Address {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	
-	
-	
-	
-	
 	
 }

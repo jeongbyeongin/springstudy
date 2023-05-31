@@ -5,10 +5,10 @@ public class Publisher {
 	// field
 	private String name;
 	private String tel;
-	
+
 	// default constructor
 	
-	// method( getter, setter )
+	// method(getter, setter)
 	public String getName() {
 		return name;
 	}
@@ -21,9 +21,5 @@ public class Publisher {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
-	
-	
-	
 	
 }

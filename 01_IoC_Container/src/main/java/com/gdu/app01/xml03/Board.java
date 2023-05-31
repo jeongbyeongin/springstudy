@@ -25,6 +25,4 @@ public class Board {
 		this.writer = writer;
 	}
 	
-	
-	
 }

@@ -15,7 +15,7 @@ import com.gdu.app10.service.BbsService;
 @RequestMapping("/bbs")
 @Controller
 public class BbsController {
-	
+
 	@Autowired
 	private BbsService bbsService;
 	
@@ -29,7 +29,7 @@ public class BbsController {
 	public String write() {
 		return "bbs/write";
 	}
-
+	
 	@PostMapping("/add.do")
 	public String add(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		int addResult = bbsService.addBbs(request);
@@ -38,7 +38,7 @@ public class BbsController {
 	}
 	
 	@PostMapping("/remove.do")
-	public String remove(int bbsNo, RedirectAttributes redirectAttributes) { 	// @RequestParam이 생략되어있다.
+	public String remove(int bbsNo, RedirectAttributes redirectAttributes) {  // @RequestParam 생략
 		int removeResult = bbsService.removeBbs(bbsNo);
 		redirectAttributes.addFlashAttribute("removeResult", removeResult);
 		return "redirect:/bbs/list.do";
@@ -50,11 +50,5 @@ public class BbsController {
 		redirectAttributes.addFlashAttribute("addReplyResult", addReplyResult);
 		return "redirect:/bbs/list.do";
 	}
-	
-	
-	
-	
-	
-	
 	
 }

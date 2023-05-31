@@ -33,7 +33,7 @@
 		let chkOne = $('.chk_one');  // 모든 개별선택
 		chkOne.on('click', function(){
 			let chkCnt = 0;
-			for(let i = 0; i < chkOne.length; i++) {
+			for(let i = 0; i < chkOne.length; i++){
 				chkCnt += $(chkOne[i]).prop('checked');
 			}
 			$('#chk_all').prop('checked', chkCnt == chkOne.length);
@@ -57,25 +57,27 @@
 	
 </script>
 <style>
-
 	.screen_out {
-			display: none;
+		display: none;
 	}
-	
-	#lbl_chk_all, .lbl_chk_one {
-			cursor: pointer;
+	#lbl_chk_all:hover {
+		cursor: pointer;
+		color: gray;
+	}
+	#lbl_chk_all:active {
+		color: silver;
 	}
 	.lbl_chk_one {
-			padding-left: 20px;
-			background-image: url('../resources/images/check1.png');
-			background-size: 16px 16px;
-			background-repeat: no-repeat;
-			background-position: 0 3px;
+		cursor: pointer;
+		padding-left: 20px;
+		background-image: url('../resources/images/check1.png');
+		background-size: 16px 16px;
+		background-repeat: no-repeat;
+		background-position: 0 3px;
 	}
 	.chk_one:checked + label {
-			background-image: url('../resources/images/check2.png');
+		background-image: url('../resources/images/check2.png');
 	}
-
 </style>
 </head>
 <body>

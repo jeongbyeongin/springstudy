@@ -22,7 +22,4 @@ public class Upload {
 		this.attach = attach;
 	}
 	
-	
-	
-	
 }

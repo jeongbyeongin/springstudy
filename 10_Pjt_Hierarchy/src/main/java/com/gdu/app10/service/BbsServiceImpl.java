@@ -17,7 +17,7 @@ import com.gdu.app10.util.PageUtil;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor   // 생성자를 넣어서 Autowired를 생략한다.
+@AllArgsConstructor
 @Service
 public class BbsServiceImpl implements BbsService {
 
@@ -27,16 +27,16 @@ public class BbsServiceImpl implements BbsService {
 	
 	@Override
 	public void loadBbsList(HttpServletRequest request, Model model) {
-		
+
 		Optional<String> opt = Optional.ofNullable(request.getParameter("page"));
-		int page = Integer.parseInt(opt.orElse("1"));   // 페이지 전달이 안된경우 1을쓴다.
+		int page = Integer.parseInt(opt.orElse("1"));
 		
 		int totalRecord = bbsMapper.getBbsCount();
-				
+		
 		int recordPerPage = 20;
 		
-		pageUtil.setPageUtil(page, totalRecord, recordPerPage);  // begin과 end를 구하기위해서.두개를 구해야 bbs.xml까지 보내야하기 때문
-
+		pageUtil.setPageUtil(page, totalRecord, recordPerPage);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", pageUtil.getBegin());
 		map.put("end", pageUtil.getEnd());
@@ -44,21 +44,20 @@ public class BbsServiceImpl implements BbsService {
 		List<BbsDTO> bbsList = bbsMapper.getBbsList(map);
 		
 		model.addAttribute("bbsList", bbsList);
-		// beginNo는 1페이지에 경우에 200 , 2페이지인 경우엔 180, 3페이지 160 
-		//								200-(1-1) * 20 / 200-(2-1)*20
 		model.addAttribute("beginNo", totalRecord - (page - 1) * recordPerPage);
-		model.addAttribute("pagination", pageUtil.getPagination(request.getContextPath() + "/bbs/list.do"));
+		//model.addAttribute("pagination", pageUtil.getPagination(request.getContextPath() + "/bbs/list.do"));  // 아래 코드로 대체 가능합니다.
+		model.addAttribute("pagination", pageUtil.getPagination(request.getRequestURI()));
 		
 	}
 	
 	@Override
-	public int addBbs(HttpServletRequest request) {  		
+	public int addBbs(HttpServletRequest request) {
 		
-		// 파라미터 writer, title  // write.jsp의 파라미터 2개 
+		// 파라미터 writer, title
 		String writer = request.getParameter("writer");
 		String title = request.getParameter("title");
 		
-		// IP주소
+		// IP
 		String ip = request.getRemoteAddr();
 		
 		// DB로 보낼 BbsDTO 객체
@@ -81,7 +80,7 @@ public class BbsServiceImpl implements BbsService {
 		return removeResult;
 	}
 	
-	@Transactional(readOnly = true)		// INSERT,UPDATE,DELETE중 2개 이상의 쿼리를 실행하는 경우 반드시 추가하자  //readOnly = true 성능향상 도움.//
+	@Transactional(readOnly=true)  // INSERT,UPDATE,DELETE 중 2개 이상의 쿼리를 실행하는 경우 반드시 추가한다.
 	@Override
 	public int addReply(HttpServletRequest request) {
 		
@@ -97,7 +96,7 @@ public class BbsServiceImpl implements BbsService {
 		int groupNo = Integer.parseInt(request.getParameter("groupNo"));
 		int groupOrder = Integer.parseInt(request.getParameter("groupOrder"));
 		
-		// 원글 bbsDTO (기존 답글 선행 작업 : increaseGroupOrder
+		// 원글 bbsDTO (기존 답글 선행 작업 : increaseGroupOrder를 위한 DTO)
 		BbsDTO bbsDTO = new BbsDTO();
 		bbsDTO.setGroupNo(groupNo);
 		bbsDTO.setGroupOrder(groupOrder);
@@ -118,7 +117,21 @@ public class BbsServiceImpl implements BbsService {
 		int addReplyResult = bbsMapper.addReply(replyDTO);
 		
 		return addReplyResult;
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

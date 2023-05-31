@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-// Junit4
+// JUnit4
 @RunWith(SpringJUnit4ClassRunner.class)
 
 // ContextConfiguration
@@ -30,7 +30,7 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 
 public class BoardControllerTest {
-	
+
 	/*
 		Mock 테스트
 		
@@ -39,11 +39,11 @@ public class BoardControllerTest {
 		3. method + mapping을 이용해서 테스트를 진행한다.
 	*/
 	
-	// Mcok 테스트를 수행하는 객체
+	// Mock 테스트를 수행하는 객체
 	// WebApplicationContext에 의해서 생성된다.
 	private MockMvc mockMvc;
 	
-	// @WebAppConfiguration이 있어야 자동 주입(@Autowired)이 가능하다.
+	// @WebApplication이 있어야 자동 주입(@Autowired)이 가능하다.
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
@@ -52,7 +52,7 @@ public class BoardControllerTest {
 	
 	// @Before
 	// 1. 모든 @Test 수행 이전에 실행된다.
-	// 2. MockMvc mockMvc 객체를 @Before에서 build(만든다)한다.
+	// 2. MockMvc mockMvc 객체를 @Before에서 build한다.
 	@Before
 	public void setUp() throws Exception {
 		mockMvc = MockMvcBuilders
@@ -63,59 +63,56 @@ public class BoardControllerTest {
 	@Test
 	public void a1삽입테스트() throws Exception {
 		LOGGER.debug(mockMvc.perform(MockMvcRequestBuilders
-				.post("/board/add.do")					// @PostMappig("/board/add.do")
-					.param("title", "테스트제목")		// 파라미터
-					.param("content", "테스트내용")		// 파라미터
-					.param("writer", "테스트작성자"))	// 파라미터
-			        	.andReturn()					// 삽입결과 
-			        	.getFlashMap()					// FlashAttribute로 저장된 결과 확인
-			        		.toString());				
-
+				.post("/board/add.do")              // @PostMapping("/board/add.do")
+					.param("title", "테스트제목")     // 파라미터
+					.param("content", "테스트내용")   // 파라미터
+					.param("writer", "테스트작성자")) // 파라미터
+						.andReturn()                    // 삽입결과
+						.getFlashMap()                  // FlashAttrubute에 저장된 결과 확인 
+							.toString());
 	}
 	
 	@Test
 	public void a2수정테스트() throws Exception {
 		LOGGER.debug(mockMvc.perform(MockMvcRequestBuilders
-				.post("/board/modify.do")					// @PostMappig("/board/modify.do")
-					.param("title", "테스트제목2")		// 파라미터
-					.param("content", "테스트내용2")	// 파라미터
-					.param("boardNo", "1"))				// 파라미터
-			        	.andReturn()					// 수정결과
-			        	.getFlashMap()					// FlashAttribute로 저장된 결과 확인
-			        		.toString());				
-
+				.post("/board/modify.do")           // @PostMapping("/board/modify.do")
+					.param("title", "테스트제목2")    // 파라미터
+					.param("content", "테스트내용2")  // 파라미터
+					.param("boardNo", "1"))           // 파라미터
+						.andReturn()                    // 수정결과
+						.getFlashMap()                  // FlashAttrubute에 저장된 결과 확인 
+							.toString());
 	}
 	
 	@Test
 	public void a3상세조회테스트() throws Exception {
 		LOGGER.debug(mockMvc.perform(MockMvcRequestBuilders
-				.get("/board/detail.do")		// @GetMapping("/board/detail.do")
-					.param("boardNo", "1"))		// 파라미터
-						.andReturn()			// 상세조회결과
-						.getModelAndView()		// Model에 저장된 조회 결과를 가져오기 위해서 ModelAndView를 먼저 가져옴
-						.getModelMap()			// ModelAndView에서 Model을 가져옴
+				.get("/board/detail.do")  // @GetMapping("/board/detail.do")
+					.param("boardNo", "1")) // 파라미터
+						.andReturn()          // 상세조회결과
+						.getModelAndView()    // Model에 저장된 조회 결과를 가져오기 위해서 ModelAndView를 먼저 가져옴
+						.getModelMap()        // ModelAndView에서 Model을 가져옴
 							.toString());
 	}
 	
 	@Test
 	public void a4목록테스트() throws Exception {
 		LOGGER.debug(mockMvc.perform(MockMvcRequestBuilders
-				.get("/board/list.do"))			// @GetMapping("/board/list.do")
-						.andReturn()			// 목록조회결과
-						.getModelAndView()		// Model에 저장된 조회 결과를 가져오기 위해서 ModelAndView를 먼저 가져옴
-						.getModelMap()			// ModelAndView에서 Model을 가져옴
-							.toString());
+				.get("/board/list.do")) // @GetMapping("/board/list.do")
+					.andReturn()          // 목록조회결과
+					.getModelAndView()    // Model에 저장된 조회 결과를 가져오기 위해서 ModelAndView를 먼저 가져옴
+					.getModelMap()        // ModelAndView에서 Model을 가져옴
+						.toString());
 	}
 	
 	@Test
 	public void a5삭제테스트() throws Exception {
 		LOGGER.debug(mockMvc.perform(MockMvcRequestBuilders
-				.post("/board/remove.do")				// @PostMappig("/board/remove.do")
-					.param("boardNo", "1"))				// 파라미터
-			        	.andReturn()					// 수정결과
-			        	.getFlashMap()					// FlashAttribute로 저장된 결과 확인
-			        		.toString());
-
+				.post("/board/remove.do")   // @PostMapping("/board/remove.do")
+					.param("boardNo", "1"))   // 파라미터
+						.andReturn()            // 수정결과
+						.getFlashMap()          // FlashAttrubute에 저장된 결과 확인 
+							.toString());
 	}
 	
 }
